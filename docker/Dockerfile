@@ -6,13 +6,13 @@ FROM python:3.12-alpine
 # gcc and musl-dev are required for compiling C extensions
 # libffi-dev is required for the cffi package
 # make is often required for building packages
-RUN apk add --no-cache gcc=13.2.1_git20231014-r0 musl-dev=1.2.4_git20230717-r4 libffi-dev=3.4.4-r3 make=4.4.1-r2
+RUN apk add --no-cache gcc musl-dev libffi-dev make
 
 # Set the working directory in the container to /app
 WORKDIR /app
 
 # Add settings.yaml to the container at /app
-COPY settings.yaml /app
+COPY docker/settings.yaml /app
 
 # Install any needed packages specified in requirements.txt
 # Note: The requirements.txt should contain pan-os-upgrade==1.3.10
